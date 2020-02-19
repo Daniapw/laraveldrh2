@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/laravelcmd.iml" filepath="$PROJECT_DIR$/.idea/laravelcmd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../laraveldrh/laraveldrh/.idea/laraveldrh.iml" filepath="$PROJECT_DIR$/../../laraveldrh/laraveldrh/.idea/laraveldrh.iml" />
+    </modules>
+  </component>
+</project>
