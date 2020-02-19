@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', "LibrosController@getIndex");
+Route::get('/', "LibrosController@getIndex")->name('inicio');
 
 Route::prefix('libros')->group(function(){
     Route::get('info/{id}', 'LibrosController@getInfo');
@@ -23,6 +23,4 @@ Route::prefix('categoria')->group(function(){
     Route::get('ver/{id}', 'CategoriaController@getLibrosCategoria');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes(['verify' => true]);

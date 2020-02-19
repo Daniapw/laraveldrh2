@@ -1,5 +1,5 @@
 body{
-    background-color: #efefef;
+    background-color: #d7d7d7;
     font-size:16px;
 }
 
@@ -24,6 +24,20 @@ a:hover{
     transition:0.3s;
 }
 
+
+.img-perfil{
+    width:30px;
+}
+
+.link-login{
+    transition:0.3s;
+    color:white;
+}
+
+.link-login:hover{
+    transition:0.3s;
+    color:lightblue;
+}
 
 .footer{
     font-family: 'Quicksand', sans-serif;

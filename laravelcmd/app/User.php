@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'country', 'sex', 'date_of_birth', 'password'
     ];
 
     /**
@@ -36,4 +37,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Funcion para obtener reviews escritas por un usuario
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function reviews(){
+        return $this->hasMany('App\Review');
+    }
+
+    /**
+     * Funcion para obtener libros favoritos de los usuarios
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function books(){
+        //Puesto que los campos id siguen la convencion 'campo_id' no hay que especificar los nombres
+        return $this->belongsToMany(Book::class, 'users_favorites');
+    }
 }

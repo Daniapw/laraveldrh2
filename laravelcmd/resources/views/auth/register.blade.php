@@ -1,23 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
+@section('contenido')
+    <div class="row justify-content-center mt-3">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+            <div class="card shadow">
+                <div class="card-header font-weight-bold text-center">{{ __('Registro') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Nombre de usuario*') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autocomplete="username" autofocus>
 
-                                @error('name')
+                                @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -26,10 +25,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo electrónico') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -40,10 +39,64 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="sexo" class="col-md-4 col-form-label text-md-right">{{ __('Sexo') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                <input type="radio" id="sexo" name="sexo" value="hombre" checked> Hombre<br>
+                                <input type="radio" name="sexo" value="mujer" > Mujer<br>
+                                <input type="radio" name="sexo" value="otro" > Otro<br>
+
+                                @error('sexo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="fecha_nac" class="col-md-4 col-form-label text-md-right" >{{ __('Fecha de nacimiento') }}</label>
+
+                            <div class="col-md-6">
+
+                                <input type="date"  id="fecha_nac" name="fecha_nac" class="form-control @error('fecha_nac') is-invalid @enderror" value="{{ old('fecha_nac') }}">
+
+                                @error('fecha_nac')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="pais" class="col-md-4 col-form-label text-md-right">{{ __('País') }}</label>
+
+                            <div class="col-md-6">
+
+                                <select name="pais" class="form-control" id="pais">
+                                    <option value="España" {{old('pais')=='España'?'selected':''}}>España</option>
+                                    <option value="Portugal" {{old('pais')=='Portugal'?'selected':''}}>Portugal</option>
+                                    <option value="Francia" {{old('pais')=='Francia'?'selected':''}}>Francia</option>
+                                    <option value="Italia" {{old('pais')=='Italia'?'selected':''}}>Italia</option>
+                                    <option value="Alemania" {{old('pais')=='Alemania'?'selected':''}}>Alemania</option>
+                                    <option value="Reino Unido" {{old('pais')=='Reino Unido'?'selected':''}}>Reino Unido</option>
+                                </select>
+
+                                @error('pais')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -54,24 +107,36 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar contraseña') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password_confirmation" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" autocomplete="new-password">
+
+                                @error('password_confirmation')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-12 text-center">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Registrarse') }}
                                 </button>
                             </div>
+
+                            <div class="col-md-12 text-center">
+                                <a class="btn btn-link" href="{{ url('/login') }}">
+                                    {{ __('¿Ya tienes una cuenta? Inicia sesión.') }}
+                                </a>
+                            </div>
+
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

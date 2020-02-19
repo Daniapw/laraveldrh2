@@ -49,11 +49,21 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
+        $mensajes = [
+            'required' => 'Este campo es obligatorio',
+            'before'=>'La fecha introducida debe ser anterior a la fecha actual',
+            'username.unique'=>'Ese nombre de usuario ya está en uso.',
+            'email.unique'=>'Esa dirección de correo electrónico ya ha sido registrada.',
+        ];
+
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'username' => ['required', 'string', 'max:30', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+            "fecha_nac"=>['required', 'before:today'],
+            "pais"=>['required']
+        ], $mensajes);
     }
 
     /**
@@ -65,9 +75,12 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'sex'=>$data['sexo'],
+            'date_of_birth'=>$data['fecha_nac'],
+            'country'=>$data['pais']
         ]);
     }
 }

@@ -174,7 +174,8 @@ class DatabaseSeeder extends Seeder
         $user1->username="Daniel";
         $user1->email="daniruiz51@gmail.com";
         $user1->country="España";
-        $user1->sex="Male";
+        $user1->sex="Hombre";
+        $user1->date_of_birth="1996-08-29";
         $user1->role="admin";
         $user1->password=bcrypt("dani");
         $user1->save();
@@ -182,11 +183,23 @@ class DatabaseSeeder extends Seeder
         $user2=new User();
         $user2->id=2;
         $user2->username="Rafaela";
-        $user2->email="rafiruiz@gmail.com";
+        $user2->email="rafihidalgo@gmail.com";
         $user2->country="España";
         $user2->sex="Mujer";
+        $user2->date_of_birth="1960-11-10";
         $user2->role="user";
-        $user2->password=bcrypt("dani");
+        $user2->password=bcrypt("rafi");
+        $user2->save();
+
+        $user2=new User();
+        $user2->id=3;
+        $user2->username="Rafael";
+        $user2->email="rafaruiz@gmail.com";
+        $user2->country="España";
+        $user2->sex="Mujer";
+        $user2->date_of_birth="1960-11-23";
+        $user2->role="user";
+        $user2->password=bcrypt("rafa");
         $user2->save();
     }
 

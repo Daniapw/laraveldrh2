@@ -35,7 +35,7 @@
                                 <tr>
                                     <th>Categoría</th>
                                     <td>
-                                        <a href="{{url('/categoria/'.$libro->genre->id)}}" class="mb-0"><i class="{{$libro->genre->icon}} mr-1"></i> {{$libro->genre->name}} </a>
+                                        <a href="{{url('/categoria/ver/'.$libro->genre->id)}}" class="mb-0"><i class="{{$libro->genre->icon}} mr-1"></i> {{$libro->genre->name}} </a>
                                     </td>
                                 </tr>
                             </table>
