@@ -74,7 +74,8 @@ class DatabaseSeeder extends Seeder
                 "genre_id"=>1,
                 "synopsis"=>"Cuando el señor Bilbo Bolsón de Bolsón Cerrado anunció que muy pronto celebraría su cumpleaños centesimodecimoprimero con una fiesta de especial magnificencia, hubo muchos comentarios y excitación en Hobbiton. Bilbo era muy rico y muy peculiar, y había sido el asombro de la Comarca durante sesenta años, desde su memorables desaparición e inesperado regreso. Las riquezas que había traído de aquellos viajes se habían convertido en leyenda local, y era creeencia común, contra todo lo que pudieran decir los viejos, que en la Colina de Bolsón Cerrado había muchos túneles atiborrados de tesoros. Primera parte de la inmortal obra de J. R. R. Tolkien, El señor de los anillos.",
                 "expanded_info"=>"AAAAAAAAAAAAAAAA",
-                "publication_date"=>"1954-07-29"
+                "publication_date"=>"1954-07-29",
+                "cover_img_file"=>"esdla1.jpg"
             ],
             [
                 "id"=>2,
@@ -83,7 +84,8 @@ class DatabaseSeeder extends Seeder
                 "genre_id"=>1,
                 "synopsis"=>"La Compañía se ha disuelto y sus integrantes emprenden caminos separados. Frodo y Sam continúan solos su viaje a lo largo del río Anduin, perseguidos por la sombra misteriosa de un ser extraño que también ambiciona la posesión del Anillo. Mientras, hombres, elfos y enanos se preparan para la batalla final contra las fuerzas del Señor del Mal.",
                 "expanded_info"=>"BBBBBBBBBB",
-                "publication_date"=>"1954-11-29"
+                "publication_date"=>"1954-11-29",
+                "cover_img_file"=>"esdla2.jpg"
             ],
             [
                 "id"=>3,
@@ -92,7 +94,8 @@ class DatabaseSeeder extends Seeder
                 "genre_id"=>1,
                 "synopsis"=>"Los ejércitos del Señor Oscuro van extendiendo cada vez más su maléfica sombra por la Tierra Media. Hombres, elfos y enanos unen sus fuerzas para presentar batalla a Sauron y sus huestes. Ajenos a estos preparativos, Frodo y Sam siguen adentrándose en el país de Mordor en su heroico viaje para destruir el Anillo de Poder en las Grietas del Destino.",
                 "expanded_info"=>"CCCCCCCCCCC",
-                "publication_date"=>"1955-10-20"
+                "publication_date"=>"1955-10-20",
+                "cover_img_file"=>"esdla3.jpg"
             ]
         ];
 

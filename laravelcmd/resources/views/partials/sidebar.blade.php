@@ -1,14 +1,14 @@
-<div class="col-12 col-md-4 order-0 order-md-1">
-    <div class="bg-white py-4 px-3">
+<div class="col-12 col-md-4 order-0 order-sm-2 ">
+    <div class="container-elementos-sidebar borde sombra py-4 px-3">
         <p class="font-weight-bold">Buscar libros</p>
 
         <form action="{{url('/libros/buscar')}}" method="POST">
             {{csrf_field()}}
-            <input type="text" name="buscar-libro" placeholder="Buscar" class="form-control">
+            <input type="text" name="buscar-libro" placeholder="Título del libro" class="form-control">
         </form>
     </div>
 
-    <div class="bg-white py-4 px-3 mt-3">
+    <div class="container-elementos-sidebar borde sombra py-4 px-3 mt-3">
         <p class="font-weight-bold">¡Síguenos en las redes sociales!</p>
         <div class="row text-center">
             <div class="col-3">

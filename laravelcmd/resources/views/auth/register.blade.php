@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
 @section('contenido')
-    <div class="row justify-content-center mt-3">
-        <div class="col-md-8">
-            <div class="card shadow">
+    <div class="row justify-content-center mt-5">
+        <div class="col-12 col-md-8">
+            <div class="card sombra">
                 <div class="card-header font-weight-bold text-center">{{ __('Registro') }}</div>
 
                 <div class="card-body">

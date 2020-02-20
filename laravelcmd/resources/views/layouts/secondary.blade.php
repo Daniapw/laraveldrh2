@@ -24,7 +24,7 @@
         <div class="contenedorContenido">
             @include('partials.navbar')
 
-            <div class="container contenido">
+            <div class="container-fluid contenido">
                 @yield('contenido')
             </div>
         </div>

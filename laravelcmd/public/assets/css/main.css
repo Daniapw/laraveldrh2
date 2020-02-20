@@ -1,13 +1,18 @@
 body{
-    background-color: #d7d7d7;
-    font-size:16px;
+    font-size:18px;
+    font-family:'Roboto', sans-serif;
+}
+
+.header{
+    background-color:#5b8c85;
+    color:white;
 }
 
 .navbar{
     font-family: 'Quicksand', sans-serif;
     font-weight: bold;
-    background-color:#222222;
-    font-size:15px;
+    background-color:#434e52;
+    font-size:20px;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -16,14 +21,26 @@ h1,h2,h3,h4,h5,h6{
 
 a{
     text-decoration:none !important;
+    color:brown;
     transition:0.3s;
 }
 
 a:hover{
-    color:black;
-    transition:0.3s;
+    color:#f58540;
+    transition:0.3s
 }
 
+.container-libro{
+    text-align: justify;
+}
+
+.sombra{
+    box-shadow:4px 4px 4px darkgray;
+}
+
+.borde{
+    border:1px solid darkgray;
+}
 
 .img-perfil{
     width:30px;
@@ -44,9 +61,27 @@ a:hover{
     background-color:#222222;
 }
 
+/**Este contenedor debe englobar TODA la pagina, incluyendo el navbar y el propio footer*/
+.contenedorGlobal{
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+  }
+
+/*Este contenedor debe englobar todo MENOS el footer*/
+  .contenedorContenido{
+      flex:1;
+      margin-bottom:20px;
+  }
+
+
 /*----------------------------------------------------
                         SIDEBAR
 ----------------------------------------------------- */
+
+.container-elementos-sidebar{
+    background-color:white;
+}
 
 #facebook{
     color:#1d68a7;
@@ -67,17 +102,22 @@ a:hover{
                         INDEX
 ----------------------------------------------------- */
 
+
+
 .titulo-libro{
-    font-size:23px;
+    font-size:25px;
+    font-weight: bold;
     font-family: 'Quicksand', sans-serif;
+    color:brown;
+
 }
 
 .sinopsis-index{
-    font-size:15px;
+    font-size:17px;
 }
 
 .etiquetas-libro{
-    font-size:13px;
+    font-size:16px;
 }
 
 /*----------------------------------------------------
@@ -88,21 +128,19 @@ a:hover{
     font-size:13px;
 }
 
+/*----------------------------------------------------
+                     CATEGORIAS
+----------------------------------------------------- */
 .tarjeta-categoria{
     min-height:100%;
-}
+    transition:0.5s;
 
-.tarjeta-categoria a{
-    color:black;
-    text-decoration:none;
-    transition: 0.4s;
-}
-
-.tarjeta-categoria a:hover{
-    transition: 0.4s;
-    color:blue;
 }
 
 .tarjeta-categoria:hover{
-    color:blue;
+    transition:0.5s;
+    transform: scale(1.05);
 }
+
+
+

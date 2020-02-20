@@ -1,4 +1,4 @@
-<header class="text-center py-3 header bg-white">
+<header class="text-center py-3 header">
     <h1>DRH-Books</h1>
 </header>
 <nav class="navbar navbar-expand-lg navbar-dark p-2 d-flex">
@@ -15,6 +15,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ (request()->is('categoria/indice')) ? 'active' : '' }}" href="{{url('/categoria/indice')}}">Categorías</a>
             </li>
+
         </ul>
     </div>
 
@@ -29,6 +30,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Mi perfil</a>
+                    <a class="dropdown-item">Mis libros favoritos</a>
                     <a class="dropdown-item" href="{{route('logout')}}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">

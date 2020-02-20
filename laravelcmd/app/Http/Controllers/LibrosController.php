@@ -6,9 +6,11 @@ use App\Book;
 use App\Genre;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LibrosController extends Controller
 {
+
 
     /**
      * Index
@@ -16,7 +18,6 @@ class LibrosController extends Controller
      */
     public function getIndex(){
         $libros=Book::all();
-        $generos=Genre::all();
         return view("libros.index")
             ->with("libros", $libros);
     }
@@ -27,7 +28,6 @@ class LibrosController extends Controller
     public function getInfo($id){
         $libro=Book::findOrFail($id);
         $reviews=$libro->reviews;
-        $generos=Genre::all();
 
         return view("libros.info")
             ->with("libro", $libro)
@@ -48,6 +48,32 @@ class LibrosController extends Controller
         return view('libros.buscar')
             ->with('libros',$libros)
             ->with('q',$q);
+    }
+
+    /**
+     * Poner libro en favoritos
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function putFavorito($id){
+        $libro=Book::find($id);
+        Auth::user()->books()->attach($libro);
+        Auth::user()->save();
+
+        return $this->getInfo($id);
+    }
+
+    /**
+     * Quitar libro de favoritos
+     * @param $id
+     * @return mixed
+     */
+    public function deleteFavorito($id){
+        $libro=Book::find($id);
+        Auth::user()->books()->detach($libro);
+        Auth::user()->save();
+
+        return $this->getInfo($id);
     }
 
 }

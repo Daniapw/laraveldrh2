@@ -13,8 +13,12 @@
 
 Route::get('/', "LibrosController@getIndex")->name('inicio');
 
-Route::prefix('libros')->group(function(){
+Route::group(['prefix' => 'libros',  'middleware' => ['auth', 'verified']], function(){
     Route::get('info/{id}', 'LibrosController@getInfo');
+    Route::put('info/{id}', 'LibrosController@putFavorito');
+    Route::delete('info/{id}', 'LibrosController@deleteFavorito');
+
+
     Route::post('buscar', 'LibrosController@postBuscar');
 });
 
