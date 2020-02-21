@@ -22,13 +22,13 @@ Route::group(['prefix' => 'libros'], function(){
 
     //Rutas para agregar y quitar favoritos
     Route::group(['middleware'=>['verified', 'auth']], function(){
-        Route::put('info/{id}', 'LibrosController@putFavorito');
-        Route::post('info/{id}', 'ReviewsController@postReview');
-        Route::delete('info/{id}', 'LibrosController@deleteFavorito');
+        Route::post('info/{id}', 'InfoController@post');
+        Route::delete('info/{id}', 'InfoController@delete');
+        Route::put('info/{id}', 'InfoController@put');
     });
 
     //Ruta para buscar libro
-    Route::post('buscar', 'LibrosController@postBuscar');
+    Route::get('buscar', 'LibrosController@getBuscar');
 });
 
 //Rutas menu usuario normal

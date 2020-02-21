@@ -2,7 +2,7 @@
     <div class="container-elementos-sidebar borde sombra py-4 px-3">
         <p class="font-weight-bold">Buscar libros</p>
 
-        <form action="{{url('/libros/buscar')}}" method="POST">
+        <form action="{{url('/libros/buscar')}}" method="GET">
             {{csrf_field()}}
             <input type="text" name="buscar-libro" placeholder="Título del libro" class="form-control">
         </form>

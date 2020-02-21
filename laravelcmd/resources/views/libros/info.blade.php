@@ -23,18 +23,19 @@
                                 <!--Si el usuario esta logeado podra agregar o quitar el libro de su lista de favoritos-->
                                 @if(Auth::check())
                                     @if(!Auth::user()->books->contains($libro->id))
-                                        <form action="{{action('LibrosController@putFavorito', $libro->id)}}" method="POST">
-                                            {{method_field('PUT')}}
+                                        <form action="{{action('InfoController@post', $libro->id)}}" method="POST">
                                             {{csrf_field()}}
-                                            <button	type="submit" class="btn btn-outline-danger">
 
+                                            <button	type="submit" class="btn btn-outline-danger" name="btn_post_fav">
+                                                <i class="fas fa-heart"></i> Agregar a favoritos
                                             </button>
                                         </form>
                                     @else
-                                        <form action="{{action('LibrosController@deleteFavorito', $libro->id)}}" method="POST">
+                                        <form action="{{action('InfoController@delete', $libro->id)}}" method="POST">
                                             {{method_field('DELETE')}}
                                             {{csrf_field()}}
-                                            <button	type="submit" class="btn btn-outline-primary">
+
+                                            <button	type="submit" class="btn btn-outline-primary" name="btn_delete_fav">
                                                 <i class="fas fa-heart-broken"></i> Quitar de favoritos
                                             </button>
                                         </form>
@@ -71,37 +72,105 @@
                 <!--Escribir o modificar opinion-->
                 @if(Auth::check())
                     @if($review_usuario==false)
-                        <div class="col-12 p-0 mt-3 sombra borde ">
-                            <div class="p-3">
+                        <div class="col-12 p-0 mt-3 ">
+
+                            <div class="text-center">
                                 <h3 class="font-weight-bold">¿Has leído este libro? Deja tu opinión:</h3>
+                            </div>
 
-                                <div class="pt-2">
-                                    <form method="POST" action="{{action('ReviewsController@postReview', $libro->id)}}">
-                                        {{csrf_field()}}
+                            <div class="mt-3 sombra borde ">
+                                <div class="p-3">
 
-                                        <div class="form-group">
-                                            <textarea class="form-control" name="contenido" maxlength="280" rows="7">
+                                    <div class="pt-2">
+                                        <form method="POST" action="{{action('InfoController@post', $libro->id)}}">
+                                            {{csrf_field()}}
 
-                                            </textarea>
-                                        </div>
+                                            <div class="form-group">
+                                                <textarea class="form-control @error('content') is-invalid @enderror" name="content" maxlength="500" rows="7" required>
 
-                                        <div class="form-group text-center">
-                                            <input type="submit" class="btn btn-primary" value="Enviar">
-                                        </div>
-                                    </form>
+                                                </textarea>
+                                                @error('content')
+                                                    <span class="invalid-feedback text-center" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group text-center">
+                                                <input type="submit" class="btn btn-primary" value="Enviar" name="btn_post_review">
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     @else
-                        <div class="p-3 mt-4">
-                            <p class="font-weight-bold mb-1">Tu opinión:</p>
-                            <p class="text-muted fecha-valoracion">{{$review_usuario->created_at}}</p>
+                        <div class="col-12 p-0 mt-3 ">
 
-                            <div class="p-4 border text-break text-wrap">
-                                <p>{{$review_usuario->content}}</p>
+                            <div class="text-center">
+                                <h3 class="font-weight-bold">Tu opinión</h3>
+                            </div>
 
-                                <div class="text-center">
-                                    <p class="mb-0">{{$review_usuario->score}}/5</p>
+                            <div class="mt-3 borde sombra">
+                                <span class="text-right ">
+                                    <form method="POST" action="{{action('InfoController@delete', $libro->id)}}">
+                                        {{csrf_field()}}
+                                        {{method_field("DELETE")}}
+
+                                        <button type="submit" name="btn_delete_review" class="btn btn-danger mt-2 mr-2">
+                                            <i class="fas fa-trash-alt"></i> Borrar
+                                        </button>
+                                    </form>
+                                </span>
+
+                                <div class="p-3 mt-4">
+                                    <div class="bg-gris overflow-auto mh-75">
+
+                                        <!--Contenido review-->
+                                        <p class="font-weight-bold mb-1">Tú</p>
+
+                                        <span id="review-usuario">
+                                            <p class="text-muted fecha-valoracion">{{$review_usuario->created_at}}</p>
+
+                                            <div class="p-4 border text-break text-wrap">
+                                                <p id="texto_review_original">{{$review_usuario->content}}</p>
+
+                                                <div class="text-center">
+                                                    <p class="mb-0">{{$review_usuario->score}}/5</p>
+                                                </div>
+                                            </div>
+                                        </span>
+
+                                        <!--Form cambiar review-->
+                                        <span id="form-review" class="d-none">
+                                            <p class="text-center text-muted mb-0">Máx: 500 caracteres</p>
+                                            <form method="POST" action="{{action('InfoController@put', $libro->id)}}">
+                                                {{csrf_field()}}
+                                                {{method_field("PUT")}}
+
+                                                <div class="form-group">
+                                                    <textarea class="form-control" name="content_editar" maxlength="500" rows="7" id="texto_review_editar" required>
+
+                                                    </textarea>
+
+                                                    @error('content_editar')
+                                                        <span class="invalid-feedback text-center" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+
+                                                </div>
+
+                                                <div class="form-group text-center">
+                                                    <input type="submit" class="btn btn-primary" value="Enviar" name="btn_put_review">
+                                                </div>
+                                            </form>
+                                        </span>
+                                    </div>
+
+                                    <div class="text-center pt-2">
+                                        <button class="btn btn-primary" id="editar_review">Editar</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -110,17 +179,17 @@
 
                 <!--Opiniones-->
                 @if(count($reviews)>0)
-                    <div class="col-12 p-0 mt-3 bg-white ">
+                    <div class="col-12 p-0 mt-5 bg-white ">
 
                         <div class="text-center">
-                            <h3 class="font-weight-bold">Opiniones</h3>
+                            <h3 class="font-weight-bold">Opiniones de los usuarios</h3>
                         </div>
 
                         <div class="bg-gris overflow-auto mh-75 borde sombra">
 
                             @foreach($reviews as $review)
                                 <div class="p-3 mt-4">
-                                    <p class="font-weight-bold mb-1">{{$review->user->username}} ({{$review->user->email}})</p>
+                                    <p class="font-weight-bold mb-1">@if($review->user_id==Auth::user()->id) Tú @else {{$review->user->username}} ({{$review->user->email}}) @endif</p>
                                     <p class="text-muted fecha-valoracion">{{$review->created_at}}</p>
 
                                     <div class="p-4 border text-break text-wrap">

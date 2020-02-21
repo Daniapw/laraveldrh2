@@ -11,22 +11,60 @@ class ReviewsController extends Controller
 {
 
     /**
-     * Put review/opinion del usuario
+     * Agregar review/opinion del usuario
      * @param Request $request
      * @param $id
      * @return string
      */
     public static function postReview(Request $request, $id){
-        $contenido=$request->input('contenido');
+        $content=$request->input('content');
 
-        $review=Review::create([
-            "book_id"=>$id,
-            "content"=> $contenido,
-            "score"=>5
-        ]);
+        //Validar contenido
+        $request->validate([
+            'content' => 'required|max:280',
+        ], ["required"=>"No puedes mandar una opinión en blanco", "max"=>"La longitud máxima es de 500 caracteres"]);
 
-        Auth::user()->reviews->attach($review);
+        //Comprobar si el usuario ya ha escrito una review del libro y guardarla si no lo ha hecho
+        if (Auth::user()->reviews()->where("book_id", "=", $id)->first()==null){
+            $review=Review::create([
+                "user_id"=>Auth::user()->id,
+                "book_id"=>$id,
+                "content"=> $content,
+                "score"=>5
+            ]);
 
-        return LibrosController::getInfo($id);
+            $review->save();
+        }
+
+    }
+
+    /**
+     * Editar review
+     * @param $request
+     * @param $id
+     */
+    public static function putReview($request, $id){
+        $review=Auth::user()->reviews()->where("book_id", "=", $id)->first();
+
+        //Validar contenido
+        $request->validate([
+            'content_editar' => 'required|max:280',
+        ], ["required"=>"Por favor, escriba algo en la review", "max"=>"La longitud máxima es de 500 caracteres"]);
+
+
+        $review->content=$request->input('content_editar');
+
+        $review->save();
+    }
+
+    /**
+     * Borrar review
+     * @param $id
+     */
+    public static function deleteReview($id){
+        $review=Auth::user()->reviews()->where("book_id", "=", $id)->first();
+
+        if ($review!=null)
+            $review->delete();
     }
 }

@@ -45,7 +45,7 @@ class LibrosController extends Controller
      * @param $q
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public static function postBuscar(Request $request){
+    public static function getBuscar(Request $request){
         $q=$request->input('buscar-libro');
 
         $query=strtolower($q);
@@ -56,30 +56,5 @@ class LibrosController extends Controller
             ->with('q',$q);
     }
 
-    /**
-     * Poner libro en favoritos
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public static function putFavorito($id){
-        $libro=Book::find($id);
-        Auth::user()->books()->attach($libro);
-        Auth::user()->save();
-
-        return self::getInfo($id);
-    }
-
-    /**
-     * Quitar libro de favoritos
-     * @param $id
-     * @return mixed
-     */
-    public static function deleteFavorito($id){
-        $libro=Book::find($id);
-        Auth::user()->books()->detach($libro);
-        Auth::user()->save();
-
-        return self::getInfo($id);
-    }
 
 }
