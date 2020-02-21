@@ -235,6 +235,7 @@ class DatabaseSeeder extends Seeder
             $b->synopsis=$libro['synopsis'];
             $b->expanded_info=$libro['expanded_info'];
             $b->publication_date=$libro['publication_date'];
+            $b->cover_img_file=$libro['cover_img_file'];
             $b->save();
         }
     }

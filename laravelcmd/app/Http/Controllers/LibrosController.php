@@ -11,12 +11,11 @@ use Illuminate\Support\Facades\Auth;
 class LibrosController extends Controller
 {
 
-
     /**
      * Index
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getIndex(){
+    public static function getIndex(){
         $libros=Book::all();
         return view("libros.index")
             ->with("libros", $libros);
@@ -25,13 +24,20 @@ class LibrosController extends Controller
     /**
      * Pagina de informacion del libro
      */
-    public function getInfo($id){
+    public static function getInfo($id){
         $libro=Book::findOrFail($id);
         $reviews=$libro->reviews;
 
+        //Comprobar si el usuario ha escrito una review de este libro y pasarla por parametro
+        if (Auth::check())
+            $review_usuario=Auth::user()->reviews()->where('book_id','=', $libro->id)->first();
+        else
+            $review_usuario=false;
+
         return view("libros.info")
             ->with("libro", $libro)
-            ->with("reviews", $reviews);
+            ->with("reviews", $reviews)
+            ->with('review_usuario', $review_usuario);
     }
 
     /**
@@ -39,7 +45,7 @@ class LibrosController extends Controller
      * @param $q
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function postBuscar(Request $request){
+    public static function postBuscar(Request $request){
         $q=$request->input('buscar-libro');
 
         $query=strtolower($q);
@@ -55,12 +61,12 @@ class LibrosController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function putFavorito($id){
+    public static function putFavorito($id){
         $libro=Book::find($id);
         Auth::user()->books()->attach($libro);
         Auth::user()->save();
 
-        return $this->getInfo($id);
+        return self::getInfo($id);
     }
 
     /**
@@ -68,12 +74,12 @@ class LibrosController extends Controller
      * @param $id
      * @return mixed
      */
-    public function deleteFavorito($id){
+    public static function deleteFavorito($id){
         $libro=Book::find($id);
         Auth::user()->books()->detach($libro);
         Auth::user()->save();
 
-        return $this->getInfo($id);
+        return self::getInfo($id);
     }
 
 }

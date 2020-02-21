@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
+
+    protected $fillable = ['user_id', 'book_id', 'content', 'score'];
+
     /**
      * Funcion para obtener usuario al que pertenece la review
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -142,5 +142,11 @@ a:hover{
     transform: scale(1.05);
 }
 
+/*----------------------------------------------------
+                     FAVORITOS
+----------------------------------------------------- */
 
+.titulo-favorito{
+    font-family: 'Quicksand', sans-serif;
+}
 

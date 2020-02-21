@@ -44,10 +44,10 @@ class VerifyEmail extends Notification
         }
 
         return (new MailMessage)
-            ->subject(Lang::get('Verify Email Address'))
-            ->line(Lang::get('Please click the button below to verify your email address.'))
-            ->action(Lang::get('Verify Email Address'), $verificationUrl)
-            ->line(Lang::get('If you did not create an account, no further action is required.'));
+            ->subject(Lang::get('Verificar correo electrónico'))
+            ->line(Lang::get('¡Hola! Haz click en el botón de abajo para verificar el correo electrónico de su cuenta de DRHBooks.'))
+            ->action(Lang::get('Verificar correo electrónico'), $verificationUrl)
+            ->line(Lang::get('Si no has creado una cuenta en DRHBooks puedes ignorar este correo.'));
     }
 
     /**
