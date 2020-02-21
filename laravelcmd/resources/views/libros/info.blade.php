@@ -189,7 +189,7 @@
 
                             @foreach($reviews as $review)
                                 <div class="p-3 mt-4">
-                                    <p class="font-weight-bold mb-1">@if($review->user_id==Auth::user()->id) Tú @else {{$review->user->username}} ({{$review->user->email}}) @endif</p>
+                                    <p class="font-weight-bold mb-1">{{$review->user->username}} ({{$review->user->email}})</p>
                                     <p class="text-muted fecha-valoracion">{{$review->created_at}}</p>
 
                                     <div class="p-4 border text-break text-wrap">
