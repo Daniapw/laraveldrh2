@@ -72,8 +72,8 @@ class DatabaseSeeder extends Seeder
                 "title"=>"ESDLA: La Comunidad del Anillo",
                 "author"=>"JRR Tolkien",
                 "genre_id"=>1,
-                "synopsis"=>"Cuando el señor Bilbo Bolsón de Bolsón Cerrado anunció que muy pronto celebraría su cumpleaños centesimodecimoprimero con una fiesta de especial magnificencia, hubo muchos comentarios y excitación en Hobbiton. Bilbo era muy rico y muy peculiar, y había sido el asombro de la Comarca durante sesenta años, desde su memorables desaparición e inesperado regreso. Las riquezas que había traído de aquellos viajes se habían convertido en leyenda local, y era creeencia común, contra todo lo que pudieran decir los viejos, que en la Colina de Bolsón Cerrado había muchos túneles atiborrados de tesoros. Primera parte de la inmortal obra de J. R. R. Tolkien, El señor de los anillos.",
-                "expanded_info"=>"AAAAAAAAAAAAAAAA",
+                "synopsis"=>"En la adormecida e idílica Comarca, un joven hobbit recibe un encargo: custodiar el Anillo Único y emprender el viaje para su destrucción en la Grieta del Destino. Acompañado por magos, hombres, elfos y enanos, atravesará la Tierra Media y se internará en las sombras de Mordor, perseguido siempre por las huestes de Sauron, el Señor Oscuro, dispuesto a recuperar su creación para establecer el dominio definitivo del Mal.",
+                "expanded_info"=>"«La obra de Tolkien, difundida en millones de ejemplares, traducida a docenas de lenguas… una coherente mitología de una autenticidad universal creada en pleno siglo XX», Le Monde",
                 "publication_date"=>"1954-07-29",
                 "cover_img_file"=>"esdla1.jpg"
             ],
@@ -83,7 +83,7 @@ class DatabaseSeeder extends Seeder
                 "author"=>"JRR Tolkien",
                 "genre_id"=>1,
                 "synopsis"=>"La Compañía se ha disuelto y sus integrantes emprenden caminos separados. Frodo y Sam continúan solos su viaje a lo largo del río Anduin, perseguidos por la sombra misteriosa de un ser extraño que también ambiciona la posesión del Anillo. Mientras, hombres, elfos y enanos se preparan para la batalla final contra las fuerzas del Señor del Mal.",
-                "expanded_info"=>"BBBBBBBBBB",
+                "expanded_info"=>"La segunda parte de la trilogía de Tolkien",
                 "publication_date"=>"1954-11-29",
                 "cover_img_file"=>"esdla2.jpg"
             ],
@@ -93,10 +93,40 @@ class DatabaseSeeder extends Seeder
                 "author"=>"JRR Tolkien",
                 "genre_id"=>1,
                 "synopsis"=>"Los ejércitos del Señor Oscuro van extendiendo cada vez más su maléfica sombra por la Tierra Media. Hombres, elfos y enanos unen sus fuerzas para presentar batalla a Sauron y sus huestes. Ajenos a estos preparativos, Frodo y Sam siguen adentrándose en el país de Mordor en su heroico viaje para destruir el Anillo de Poder en las Grietas del Destino.",
-                "expanded_info"=>"CCCCCCCCCCC",
+                "expanded_info"=>"El épico final de la trilogía fantástica por excelencia.",
                 "publication_date"=>"1955-10-20",
                 "cover_img_file"=>"esdla3.jpg"
-            ]
+            ],
+            [
+                "id"=>4,
+                "title"=>"Dune",
+                "author"=>"Frank Herbert",
+                "genre_id"=>2,
+                "synopsis"=>"Arrakis: un planeta desértico donde el agua es el bien más preciado, donde llorar a los muertos es el símbolo de máxima prodigalidad. Paul Atreides: un adolescente marcado por un destino singular, dotado de extraños poderes, abocado a convertirse en dictador, mesías y mártir. Los Harkonnen: personificación de las intrigas que rodean el Imperio Galáctico, buscan obtener el control sobre Arrakis para disponer de la melange, preciosa especia y uno de los bienes más codiciados del universo.",
+                "expanded_info"=>"Los Fremen: seres libres que han convertido el inhóspito paraje de Dune en su hogar, y que se sienten orgullosos de su pasado y temerosos de su futuro. Dune: una obra maestra unánimemente reconocida como la mejor saga de ciencia ficción de todos los tiempos..",
+                "publication_date"=>"1965-08-01",
+                "cover_img_file"=>"dune.jpg"
+            ],
+            [
+                "id"=>5,
+                "title"=>"Asesinato en el Orient Express",
+                "author"=>"Agatha Christie",
+                "genre_id"=>3,
+                "synopsis"=>"En un lugar aislado de la antigua Yugoslavia, en plena madrugada, una fuerte tormenta de nieve obstaculiza la línea férrea por donde circula el Orient Express. Procedente de la exótica Estambul, en él viaja el detective Hércules Poirot, que repentinamente se topa con uno de los casos más desconcertantes de su carrera: en el compartimiento vecino ha sido asesinado Samuel E. Ratchett mientras dormía, pese a que ningún indicio trasluce un móvil concreto. Poirot aprovechará la situación para indagar entre los ocupantes del vagón, que a todas luces deberían ser los únicos posibles autores del crimen.",
+                "expanded_info"=>"Una víctima, doce sospechosos y una mente privilegiada en busca de la verdad: Agatha Christie construye con esta Novela una intrigante historia de suspense que desencadena en una resolución magistral.",
+                "publication_date"=>"1934-01-01",
+                "cover_img_file"=>"orient-express.jpg"
+            ],
+            [
+                "id"=>6,
+                "title"=>"Confesiones de un incrédulo y otros ensayos escogidos",
+                "author"=>"H.P. Lovecraft",
+                "genre_id"=>10,
+                "synopsis"=>"Se ofrece aquí una selección de artículos y ensayos de H. P. Lovecraft sobre filosofía, ciencia, política y literatura. Aparecidos en periódicos, revistas amateury cartas, e inéditos en nuestro idioma, nos presentan una faceta totalmente desconocida ―y acaso silenciada― de este influyente genio del imaginario literario del terror y la fantasía.",
+                "expanded_info"=>"Un Lovecraft polémico, provocador, y a veces desmesurado, defensor de los principios de una clase media norteamericana en franca zozobra durante los años treinta; pero, sobre todo, hondamente preocupado por la crisis civilizatoria del mundo moderno y el papel de la ciencia y la cultura en el futuro. Titula este volumen el ensayo autobiográfico «Confesiones de un incrédulo», que describe su apartamiento de la religión.",
+                "publication_date"=>"2018-03-14",
+                "cover_img_file"=>"confesiones.jpg"
+            ],
         ];
 
     //Array para la tabla users_favorites
@@ -137,13 +167,13 @@ class DatabaseSeeder extends Seeder
                 "id"=>2,
                 "user_id"=>1,
                 "book_id"=>2,
-                "content"=>"Espera mi llegada con la primera luz del quinto dia, al alba, mira al este.",
+                "content"=>"Increíble la parte del Abismo de Helm, mi momento favorito de la trilogía.",
             ],
             [
                 "id"=>3,
                 "user_id"=>1,
                 "book_id"=>3,
-                "content"=> "¡Hijos de Gondor y de Rohan! ¡Mis hermanos! Veo en vuestros ojos el mismo miedo que encogería mi propio corazón. Pudiera llegar el día en que el valor de los hombres decayera, en que olvidáramos a nuestros compañeros y se rompieran los lazos de nuestra comunidad; ¡pero hoy no es ese día! En que una horda de lobos y escudos rotos rubricaran la consumación de la edad de los hombres; ¡pero hoy no es ese día! ¡¡En este día lucharemos!!, por todo aquello que vuestro corazón ama de esta buena tierra. ¡Os llamo a luchar, Hombres del Oeste!",
+                "content"=> "Un final perfecto para una trilogía perfecta",
             ]
         ];
 
