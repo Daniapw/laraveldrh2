@@ -132,21 +132,18 @@ class DatabaseSeeder extends Seeder
                 "user_id"=>1,
                 "book_id"=>1,
                 "content"=>"Uno de mis libros favoritos, me encanta la parte en la que van a las Minas de Moria",
-                "score"=>5
             ],
             [
                 "id"=>2,
                 "user_id"=>1,
                 "book_id"=>2,
                 "content"=>"Espera mi llegada con la primera luz del quinto dia, al alba, mira al este.",
-                "score"=>5
             ],
             [
                 "id"=>3,
                 "user_id"=>1,
                 "book_id"=>3,
                 "content"=> "¡Hijos de Gondor y de Rohan! ¡Mis hermanos! Veo en vuestros ojos el mismo miedo que encogería mi propio corazón. Pudiera llegar el día en que el valor de los hombres decayera, en que olvidáramos a nuestros compañeros y se rompieran los lazos de nuestra comunidad; ¡pero hoy no es ese día! En que una horda de lobos y escudos rotos rubricaran la consumación de la edad de los hombres; ¡pero hoy no es ese día! ¡¡En este día lucharemos!!, por todo aquello que vuestro corazón ama de esta buena tierra. ¡Os llamo a luchar, Hombres del Oeste!",
-                "score"=>5
             ]
         ];
 
@@ -276,7 +273,6 @@ class DatabaseSeeder extends Seeder
             $r->user_id=$review['user_id'];
             $r->book_id=$review['book_id'];
             $r->content=$review['content'];
-            $r->score=$review['score'];
             $r->save();
         }
     }

@@ -135,14 +135,11 @@
                                         <p class="font-weight-bold mb-1">Tú</p>
 
                                         <span id="review-usuario">
-                                            <p class="text-muted fecha-valoracion">{{$review_usuario->created_at}}</p>
+                                            <p class="text-muted fecha-valoracion">{{$review_usuario->updated_at}}</p>
 
                                             <div class="p-4 border text-break text-wrap">
                                                 <p id="texto_review_original">{{$review_usuario->content}}</p>
 
-                                                <div class="text-center">
-                                                    <p class="mb-0">{{$review_usuario->score}}/5</p>
-                                                </div>
                                             </div>
                                         </span>
 
@@ -195,14 +192,10 @@
                             @foreach($reviews as $review)
                                 <div class="p-3 mt-4">
                                     <p class="font-weight-bold mb-1">{{$review->user->username}} ({{$review->user->email}})</p>
-                                    <p class="text-muted fecha-valoracion">{{$review->created_at}}</p>
+                                    <p class="text-muted fecha-valoracion">{{$review->updated_at}}</p>
 
                                     <div class="p-4 border text-break text-wrap">
                                         <p>{{$review->content}}</p>
-
-                                        <div class="text-center">
-                                            <p class="mb-0">{{$review->score}}/5</p>
-                                        </div>
                                     </div>
                                 </div>
                             @endforeach

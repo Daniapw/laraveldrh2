@@ -29,8 +29,7 @@ class ReviewsController extends Controller
             $review=Review::create([
                 "user_id"=>Auth::user()->id,
                 "book_id"=>$id,
-                "content"=> $content,
-                "score"=>5
+                "content"=> $content
             ]);
 
             $review->save();

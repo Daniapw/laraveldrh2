@@ -18,7 +18,6 @@ class CreateReviewsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('book_id')->unsigned();
             $table->text('content');
-            $table->integer('score')->unsigned();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
