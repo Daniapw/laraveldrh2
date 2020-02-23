@@ -17,12 +17,12 @@
     <script src="https://kit.fontawesome.com/675ea53539.js" crossorigin="anonymous"></script>
 
     <script
-            src="https://code.jquery.com/jquery-3.4.1.slim.js"
-            integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
 
     <!--Archivos js-->
-    <script src="{{url(asset('assets/js/editar_review.js'))}}"></script>
+    @yield('head')
 
 
     <title>DRHBooks</title>

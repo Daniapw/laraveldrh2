@@ -13,8 +13,8 @@
         @if(count($libros)>0)
             @include('partials.libros')
         @else
-            <div class="col-12 col-md-8 text-danger">
-                <p>No se ha encontrado ningún libro que coincida con ese término de búsqueda</p>
+            <div class="col-12 col-md-8 text-danger titulo-libro text-center">
+                <p>Lo sentimos, no hemos podido encontrar ningún libro que coincida con ese término de búsqueda <i class="fas fa-frown"></i></p>
             </div>
         @endif
 

@@ -26,12 +26,15 @@
         @else
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span ><img class="rounded-circle mr-2 img-perfil" src="{{asset('assets/img/img_usuarios/'.Auth::user()->profile_img_file)}}">{{Auth::user()->username}}</span>
+                    <span ><img class="rounded-circle mr-2 img-perfil" src="{{asset('assets/img/img_usuarios/'.Auth::user()->profile_img_file)}}"><p class="mb-0 username d-inline">{{Auth::user()->username}}</p></span>
                 </button>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Mi perfil</a>
-                    <a class="dropdown-item" href="{{url('/usuario/favoritos')}}">Mis libros favoritos</a>
-                    <a class="dropdown-item" href="{{route('logout')}}"
+                <div class="dropdown-menu dropdown-menu-right " aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item font-weight-bold" href="{{url('/usuario/perfil')}}">Tu perfil</a>
+                    <a class="dropdown-item font-weight-bold" href="{{url('/usuario/favoritos')}}">Tus libros favoritos</a>
+                    @if(Auth::user()->role=="admin")
+                        <a class="dropdown-item font-weight-bold" href="{{url('/admin/panel')}}">Panel de gestión</a>
+                    @endif
+                    <a class="dropdown-item font-weight-bold" href="{{route('logout')}}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                         Cerrar sesión

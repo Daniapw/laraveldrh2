@@ -1,4 +1,4 @@
-<div class="col-12 col-md-4 order-0 order-sm-2 ">
+<div class="col-12 col-md-4 order-0 order-sm-2 mb-3 mb-md-0">
     <div class="container-elementos-sidebar borde sombra py-4 px-3">
         <p class="font-weight-bold">Buscar libros</p>
 

@@ -6,6 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title', 'author', 'cover_img_file', 'genre_id', 'publication_date', 'synopsis', 'expanded_info'
+    ];
+
     /**
      * Funcion para obtener reviews asociadas con un libro
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

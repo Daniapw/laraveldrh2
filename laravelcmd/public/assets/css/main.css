@@ -19,10 +19,24 @@ h1,h2,h3,h4,h5,h6{
     font-family: 'Quicksand', sans-serif;
 }
 
+form label{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+}
+
+.card-header{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+}
+
 a{
     text-decoration:none !important;
     color:brown;
     transition:0.3s;
+}
+
+.username{
+    font-size:20px;
 }
 
 a:hover{
@@ -43,7 +57,7 @@ a:hover{
 }
 
 .img-perfil{
-    width:30px;
+    width:40px;
 }
 
 .link-login{
@@ -150,3 +164,22 @@ a:hover{
     font-family: 'Quicksand', sans-serif;
 }
 
+/*----------------------------------------------------
+                     PERFIL
+----------------------------------------------------- */
+
+.titulo-perfil{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+}
+
+/*----------------------------------------------------
+                     ADMIN
+----------------------------------------------------- */
+
+.encabezado-tablas{
+    background-color:brown;
+    color:white;
+    font-family: 'Quicksand', sans-serif;
+
+}

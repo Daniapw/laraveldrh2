@@ -7,8 +7,23 @@
                 <div class="card-header font-weight-bold text-center">{{ __('Registro') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
+
+                        <div class="form-group row">
+                            <label for="imagen_perfil" class="col-md-4 col-form-label text-md-right">{{ __('Imagen de perfil (opcional)') }}</label>
+
+                            <div class="col-md-6">
+
+                                <input type="file" class="form-control-file" id="imagen_perfil" name="imagen_perfil" class="form-control @error('imagen_perfil') is-invalid @enderror" value="{{ old('imagen_perfil') }}" accept="image/jpeg, image/png">
+
+                                @error('imagen_perfil')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Nombre de usuario*') }}</label>
@@ -85,6 +100,35 @@
                                 </select>
 
                                 @error('pais')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('Teléfono (opcional)') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="telefono" type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}">
+
+                                @error('telefono')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="codigo_postal" class="col-md-4 col-form-label text-md-right">{{ __('Código postal (opcional)') }}</label>
+
+                            <div class="col-md-6">
+
+                                <input type="text"  id="codigo_postal" name="codigo_postal" class="form-control @error('codigo_postal') is-invalid @enderror" value="{{ old('codigo_postal') }}">
+
+                                @error('codigo_postal')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

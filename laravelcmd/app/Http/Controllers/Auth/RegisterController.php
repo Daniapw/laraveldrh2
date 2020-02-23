@@ -51,18 +51,25 @@ class RegisterController extends Controller
     {
 
         $mensajes = [
-            'required' => 'Este campo es obligatorio',
-            'before'=>'La fecha introducida debe ser anterior a la fecha actual',
+            'required' => 'Este campo es obligatorio.',
+            'before'=>'La fecha introducida debe ser anterior a la fecha actual.',
             'username.unique'=>'Ese nombre de usuario ya está en uso.',
+            'username.max'=>'Máximo 30 caracteres',
             'email.unique'=>'Esa dirección de correo electrónico ya ha sido registrada.',
+            'alpha_num'=>'Este campo solo puede contener caracteres alfanuméricos.',
+            'numeric'=>'Este campo solo puede contener números',
+            'telefono.digits'=>'El número de teléfono debe tener 9 dígitos',
         ];
 
         return Validator::make($data, [
-            'username' => ['required', 'string', 'max:30', 'unique:users'],
-            'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
+            'username' => ['required', 'string', 'max:30', 'unique:users', 'alpha_num'],
+            'email' => ['required', 'string', 'email', 'max:50', 'unique:users', 'email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             "fecha_nac"=>['required', 'before:today'],
-            "pais"=>['required']
+            'codigo_postal'=>['nullable','alpha_num'],
+            'telefono'=>['nullable','digits:9'],
+            "pais"=>['required'],
+            "imagen_perfil"=>['nullable','image']
         ], $mensajes);
     }
 
@@ -74,13 +81,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $imagen="default_user.jpg";
+
+        //Mover imagen al directorio assets/img/img_usuarios con nombre nuevo
+        if (array_key_exists('imagen_perfil', $data)) {
+            $imagen=time()."".$data['imagen_perfil']->getClientOriginalName();
+            $data['imagen_perfil']->move('assets/img/img_usuarios', $imagen);
+        }
+
         return User::create([
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'sex'=>$data['sexo'],
             'date_of_birth'=>$data['fecha_nac'],
-            'country'=>$data['pais']
+            'country'=>$data['pais'],
+            'postal_code'=>$data['codigo_postal'],
+            'phone_number'=>$data['telefono'],
+            'profile_img_file'=>$imagen
         ]);
     }
 }

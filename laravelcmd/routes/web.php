@@ -35,6 +35,8 @@ Route::group(['prefix' => 'libros'], function(){
 Route::group(['prefix' => 'usuario',  'middleware' => ['auth', 'verified']], function(){
 
     Route::get('favoritos', 'UsuarioController@getFavoritos');
+    Route::get('perfil', 'UsuarioController@getPerfil');
+
 
 });
 
@@ -42,6 +44,45 @@ Route::group(['prefix' => 'usuario',  'middleware' => ['auth', 'verified']], fun
 Route::prefix('categoria')->group(function(){
     Route::get('indice', 'CategoriaController@getIndiceCategorias');
     Route::get('ver/{id}', 'CategoriaController@getLibrosCategoria');
+});
+
+//Rutas del panel de administracion con middleware personalizado que comprobara si el usuario logeado tiene el rol 'admin'
+Route::group(['prefix' => 'admin',  'middleware' => 'admin'], function(){
+    Route::get('panel', 'AdminController@getPanelPrincipal');
+
+    //Panel de gestion de usuarios
+    Route::group(['prefix'=>'panel_usuarios'], function(){
+        Route::get('listado', 'AdminController@getPanelUsuarios');
+        Route::delete('listado', 'UsuarioController@deleteUsuario');
+    });
+
+
+    //Panel de gestion de libros
+    Route::group(['prefix'=>'panel_libros'], function(){
+        Route::get('listado', 'AdminController@getPanelLibros');
+        Route::delete('listado', 'LibrosController@deleteLibro');
+
+        Route::get('crear', 'AdminController@getCrearLibro');
+        Route::post('crear', 'LibrosController@createLibro');
+
+        Route::get('editar', 'AdminController@getEditarLibro');
+        Route::put('editar', 'LibrosController@editLibro');
+
+    });
+
+    //Panel de gestion de categorias
+    Route::group(['prefix'=>'panel_categorias'], function(){
+        Route::get('listado', 'AdminController@getPanelCategorias');
+        Route::delete('listado', 'CategoriaController@deleteCategoria');
+
+        Route::get('crear', 'AdminController@getCrearCategoria');
+        Route::post('crear', 'CategoriaController@createCategoria');
+
+
+        Route::get('editar', 'AdminController@getEditarCategoria');
+        Route::put('editar', 'CategoriaController@editCategoria');
+    });
+
 });
 
 Auth::routes(['verify' => true]);

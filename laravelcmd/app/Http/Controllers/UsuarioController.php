@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,14 @@ class UsuarioController extends Controller
 
         return view("usuario.favoritos")
             ->with("libros", $libros);
+    }
+
+    /**
+     * Perfil
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public static function getPerfil(){
+        return view("usuario.perfil");
     }
 
     /**
@@ -45,6 +54,28 @@ class UsuarioController extends Controller
             Auth::user()->books()->detach($libro);
             Auth::setUser(Auth::user()->fresh());
         }
+    }
+
+    /**
+     * Borrar usuario
+     * @param $id
+     */
+    public static function deleteUsuario(Request $request){
+        $id=$request->input('id');
+
+        try {
+            $user = User::findOrFail($id);
+
+            $user->reviews()->delete();
+            $user->books()->detach();
+
+            $user->delete();
+        }
+        catch(ModelNotFoundException $e){
+
+        }
+
+        return AdminController::getPanelUsuarios();
     }
 
 }

@@ -1,9 +1,14 @@
 @extends('layouts.secondary')
+
+@section('head')
+    <script src="{{url(asset('assets/js/editar_review.js'))}}"></script>
+@endsection
+
 @section('contenido')
     <div class="row mt-3 m-md-5">
 
         <!--Primera columna: informacion del libro y reviews-->
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-8 order-1">
             <div class="row">
                 <div class="col-12 container-libro borde sombra mb-3 p-2">
                     <div class="row p-3">

@@ -180,6 +180,8 @@ class DatabaseSeeder extends Seeder
         $user1->sex="Hombre";
         $user1->date_of_birth="1996-08-29";
         $user1->role="admin";
+        $user1->postal_code="14900";
+        $user1->phone_number="123123123";
         $user1->password=bcrypt("dani");
         $user1->save();
 
@@ -191,19 +193,23 @@ class DatabaseSeeder extends Seeder
         $user2->sex="Mujer";
         $user2->date_of_birth="1960-11-10";
         $user2->role="user";
+        $user2->postal_code="14900";
+        $user2->phone_number="321321321";
         $user2->password=bcrypt("rafi");
         $user2->save();
 
-        $user2=new User();
-        $user2->id=3;
-        $user2->username="Rafael";
-        $user2->email="rafaruiz@gmail.com";
-        $user2->country="España";
-        $user2->sex="Mujer";
-        $user2->date_of_birth="1960-11-23";
-        $user2->role="user";
-        $user2->password=bcrypt("rafa");
-        $user2->save();
+        $user3=new User();
+        $user3->id=3;
+        $user3->username="Rafael";
+        $user3->email="rafaruiz@gmail.com";
+        $user3->country="España";
+        $user3->sex="Mujer";
+        $user3->date_of_birth="1960-11-23";
+        $user3->role="user";
+        $user3->postal_code="14900";
+        $user3->phone_number="222222222";
+        $user3->password=bcrypt("rafa");
+        $user3->save();
     }
 
     /**
@@ -225,6 +231,9 @@ class DatabaseSeeder extends Seeder
      * Seedear libros
      */
     private function seedBooks(){
+        //Borrar contenidos de la tabla
+        DB::table('books')->delete();
+
 
         foreach($this->arrayLibros as $libro){
             $b=new Book();
@@ -244,6 +253,9 @@ class DatabaseSeeder extends Seeder
      * Seedear favoritos
      */
     private function seedUsersFavorites(){
+        //Borrar contenidos de la tabla
+        DB::table('users_favorites')->delete();
+
         foreach($this->arrayFavorites as $favorito){
             DB::table('users_favorites')->insert(
                 ['id' => $favorito['id'], 'user_id' => $favorito['user_id'], 'book_id'=>$favorito['book_id']]
@@ -255,6 +267,9 @@ class DatabaseSeeder extends Seeder
      * Seedear reviews
      */
     private function seedReviews(){
+        //Borrar contenidos de la tabla
+        DB::table('reviews')->delete();
+
         foreach($this->arrayReviews as $review){
             $r=new Review();
             $r->id=$review['id'];
