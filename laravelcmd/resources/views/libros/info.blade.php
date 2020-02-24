@@ -91,7 +91,7 @@
                                             {{csrf_field()}}
 
                                             <div class="form-group">
-                                                <textarea class="form-control @error('content') is-invalid @enderror" name="content" maxlength="500" rows="7" required>
+                                                <textarea class="form-control @error('content') is-invalid @enderror" name="content" maxlength="280" rows="7" required>
 
                                                 </textarea>
                                                 @error('content')
@@ -151,7 +151,7 @@
                                                 {{method_field("PUT")}}
 
                                                 <div class="form-group">
-                                                    <textarea class="form-control" name="content_editar" maxlength="500" rows="7" id="texto_review_editar" required>
+                                                    <textarea class="form-control @error('content_editar') is-invalid @enderror" name="content_editar" maxlength="280" rows="7" id="texto_review_editar" required>
 
                                                     </textarea>
 

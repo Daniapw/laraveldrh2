@@ -33,7 +33,7 @@
                             <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Título') }}</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" max="255">
+                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" maxlength="255">
 
                                 @error('title')
                                 <span class="invalid-feedback" role="alert">
@@ -47,7 +47,7 @@
                             <label for="autor" class="col-md-4 col-form-label text-md-right">{{ __('Autor') }}</label>
 
                             <div class="col-md-6">
-                                <input id="autor" type="text" class="form-control @error('autor') is-invalid @enderror" name="autor" value="{{ old('autor') }}" max="255">
+                                <input id="autor" type="text" class="form-control @error('autor') is-invalid @enderror" name="autor" value="{{ old('autor') }}" maxlength="255">
 
                                 @error('autor')
                                 <span class="invalid-feedback" role="alert">
@@ -92,11 +92,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="sinopsis" class="col-md-12 col-form-label text-center" >{{ __('Sinopsis (máximo 350 caracteres)') }}</label>
+                            <label for="sinopsis" class="col-md-12 col-form-label text-center" >{{ __('Sinopsis (máximo 700 caracteres)') }}</label>
 
                             <div class="col-md-10 m-auto">
 
-                                <textarea id="sinopsis" name="sinopsis" class="form-control @error('sinopsis') is-invalid @enderror" rows="8" maxlength="350">{{old('sinopsis')}}</textarea>
+                                <textarea id="sinopsis" name="sinopsis" class="form-control @error('sinopsis') is-invalid @enderror" rows="8" maxlength="700">{{old('sinopsis')}}</textarea>
 
                                 @error('sinopsis')
                                 <span class="invalid-feedback" role="alert">

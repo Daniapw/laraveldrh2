@@ -32,7 +32,7 @@ class ValidarEditLibro extends FormRequest
             "title.unique"=>"Ese título ya ha sido registrado en la base de datos",
             "title.max"=>"El título del libro solo puede contener hasta 255 caracteres",
             "title.alpha_num"=>"El título del libro solo puede contener caracteres alfanuméricos",
-            "sinopsis.max"=>"La sinopsis solo puede contener hasta 350 caracteres",
+            "sinopsis.max"=>"La sinopsis solo puede contener hasta 700 caracteres",
             "info.max"=>"La información adicional solo puede hasta 500 caracteres",
 
         ];
@@ -54,7 +54,7 @@ class ValidarEditLibro extends FormRequest
             'autor'=>'required|max:255',
             'categoria'=>'required',
             'fecha_pub'=>'required|before:today',
-            'sinopsis'=>'required|max:350',
+            'sinopsis'=>'required|max:700',
             'info'=>'required|max:500'
         ];
     }

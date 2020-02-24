@@ -44,7 +44,7 @@ class CategoriaController extends Controller
 
         $icono="fas fa-folder";
 
-        if ($request->has('icono'))
+        if ($request->input('icono')!=null)
             $icono=$request->input('icono');
 
         Genre::create([
@@ -66,8 +66,11 @@ class CategoriaController extends Controller
 
         $icono=$genero->icon;
 
-        //Mover imagen al directorio assets/img/caratulas_libros con nombre nuevo
-        if (array_key_exists('icono', $datos)) {
+        //Cambiar icono
+        if ($request->input('icono')==null) {
+            $icono="fas fa-folder";
+        }
+        else{
             $icono=$request->input('icono');
         }
 

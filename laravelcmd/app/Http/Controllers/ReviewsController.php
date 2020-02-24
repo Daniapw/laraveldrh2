@@ -22,7 +22,7 @@ class ReviewsController extends Controller
         //Validar contenido
         $request->validate([
             'content' => 'required|max:280',
-        ], ["required"=>"No puedes mandar una opinión en blanco", "max"=>"La longitud máxima es de 500 caracteres"]);
+        ], ["required"=>"No puedes mandar una opinión en blanco", "max"=>"La longitud máxima es de 280 caracteres"]);
 
         //Comprobar si el usuario ya ha escrito una review del libro y guardarla si no lo ha hecho
         if (Auth::user()->reviews()->where("book_id", "=", $id)->first()==null){
@@ -48,7 +48,7 @@ class ReviewsController extends Controller
         //Validar contenido
         $request->validate([
             'content_editar' => 'required|max:280',
-        ], ["required"=>"Por favor, escriba algo en la review", "max"=>"La longitud máxima es de 500 caracteres"]);
+        ], ["required"=>"No puedes mandar una opinión en blanco", "max"=>"La longitud máxima es de 280 caracteres"]);
 
 
         $review->content=$request->input('content_editar');
