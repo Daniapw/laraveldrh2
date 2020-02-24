@@ -6,12 +6,19 @@ $(function(){
 
       $("#texto_review_editar").text($("#texto_review_original").text());
 
-      console.log("hola");
-
       //Cambiar texto del boton
-      if($(this).text()=="Dejar de editar")
-         $(this).text("Editar")
+      if($("#texto-boton").text()=="Dejar de editar") 
+         $("#texto-boton").text("Editar");
       else
-         $(this).text("Dejar de editar");
+         $("#texto-boton").text("Dejar de editar");
+
+
+      //Cambiar icono y color del boton
+      $("#icono-btn-editar").toggleClass("fa-times");
+      $("#icono-btn-editar").toggleClass("fa-edit");
+
+      $("#editar_review").toggleClass("btn-primary");
+      $("#editar_review").toggleClass("btn-danger");
+
    });
 });

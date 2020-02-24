@@ -49,7 +49,7 @@ class ValidarEditLibro extends FormRequest
         $id = $this->get("id");
 
         return [
-            'imagen_caratula'=>'nullable|image|dimensions:max_width=500, max_height:750',
+            'imagen_caratula'=>'nullable|image|dimensions:max_width=500, max_height=750',
             'title'=>[Rule::unique('books')->ignore($id,"id"), 'max:255', 'required'],
             'autor'=>'required|max:255',
             'categoria'=>'required',

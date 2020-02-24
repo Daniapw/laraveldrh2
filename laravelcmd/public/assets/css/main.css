@@ -88,6 +88,11 @@ a:hover{
       margin-bottom:20px;
   }
 
+.btn{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+}
+
 
 /*----------------------------------------------------
                         SIDEBAR

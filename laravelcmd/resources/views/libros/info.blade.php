@@ -132,7 +132,7 @@
                                     <div class="bg-gris overflow-auto mh-75">
 
                                         <!--Contenido review-->
-                                        <p class="font-weight-bold mb-1">Tú</p>
+                                        <p class="font-weight-bold mb-1"><img src="{{asset("assets/img/img_usuarios/".Auth::user()->profile_img_file)}}" class="mr-1 rounded-circle" width="30px" alt="">Tú</p>
 
                                         <span id="review-usuario">
                                             <p class="text-muted fecha-valoracion">{{$review_usuario->updated_at}}</p>
@@ -145,7 +145,7 @@
 
                                         <!--Form cambiar review-->
                                         <span id="form-review" class="d-none">
-                                            <p class="text-center text-muted mb-0">Máx: 500 caracteres</p>
+                                            <p class="text-center text-muted mb-0">Máx: 280 caracteres</p>
                                             <form method="POST" action="{{action('InfoController@put', $libro->id)}}">
                                                 {{csrf_field()}}
                                                 {{method_field("PUT")}}
@@ -164,23 +164,23 @@
                                                 </div>
 
                                                 <div class="form-group text-center">
-                                                    <input type="submit" class="btn btn-primary" value="Enviar" name="btn_put_review">
+                                                    <input type="submit" class="btn btn-success" value="Enviar" name="btn_put_review">
                                                 </div>
                                             </form>
                                         </span>
                                     </div>
 
                                     <div class="text-center pt-2">
-                                        <button class="btn btn-primary" id="editar_review">Editar</button>
+                                        <button class="btn btn-primary" id="editar_review"><i id="icono-btn-editar" class="fas fa-edit"></i> <span id="texto-boton">Editar</span></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endif
+
                 @endif
 
                 <!--Opiniones-->
-                @if(count($reviews)>0)
                     <div class="col-12 p-0 mt-5 bg-white ">
 
                         <div class="text-center">
@@ -189,9 +189,18 @@
 
                         <div class="bg-gris overflow-auto mh-75 borde sombra">
 
+                            @if(!Auth::check())
+                                <div class="text-center mt-3">
+                                    <h5>
+                                        <a href="{{url("/login")}}" class="font-weight-bold">¿Quieres compartir tu opinión sobre este libro? Inicia sesión o regístrate aquí</a>
+                                    </h5>
+                                </div>
+                            @endif
+
+                        @if(count($reviews)>0)
                             @foreach($reviews as $review)
                                 <div class="p-3 mt-4">
-                                    <p class="font-weight-bold mb-1">{{$review->user->username}} ({{$review->user->email}})</p>
+                                    <p class="font-weight-bold mb-1"><img src="{{asset("assets/img/img_usuarios/".$review->user->profile_img_file)}}" class="mr-1 rounded-circle" width="30px" alt=""> {{$review->user->username}}</p>
                                     <p class="text-muted fecha-valoracion">{{$review->updated_at}}</p>
 
                                     <div class="p-4 border text-break text-wrap">
@@ -200,9 +209,13 @@
                                 </div>
                             @endforeach
 
+                        @else
+                            <div class="p-3 mt-2 text-center">
+                                <h4>No hay opiniones para este libro</h4>
+                            </div>
+                        @endif
                         </div>
                     </div>
-                @endif
 
             </div>
         </div>

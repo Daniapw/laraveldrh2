@@ -42,7 +42,7 @@ class ValidarLibro extends FormRequest
     public function rules()
     {
         return [
-            'imagen_caratula'=>'nullable|image|dimensions:max_width=500, max_height:750',
+            'imagen_caratula'=>'nullable|image|dimensions:max_width=500, max_height=750',
             'title'=>'required|unique:books|max:255',
             'autor'=>'required|max:255',
             'categoria'=>'required',

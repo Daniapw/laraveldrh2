@@ -36,7 +36,8 @@ Route::group(['prefix' => 'usuario',  'middleware' => ['auth', 'verified']], fun
 
     Route::get('favoritos', 'UsuarioController@getFavoritos');
     Route::get('perfil', 'UsuarioController@getPerfil');
-
+    Route::get('modificar_perfil', 'UsuarioController@getModificar');
+    Route::put('modificar_perfil', 'UsuarioController@putUsuario');
 
 });
 

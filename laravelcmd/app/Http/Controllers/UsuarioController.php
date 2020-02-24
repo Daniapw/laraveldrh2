@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Http\Requests\ValidarEditUsuario;
 use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -27,6 +28,15 @@ class UsuarioController extends Controller
     public static function getPerfil(){
         return view("usuario.perfil");
     }
+
+    /**
+     * Modificar perfil
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public static function getModificar(){
+        return view("usuario.modificar_perfil");
+    }
+
 
     /**
      * Poner libro en favoritos
@@ -78,4 +88,43 @@ class UsuarioController extends Controller
         return AdminController::getPanelUsuarios();
     }
 
+    /**
+     * Modificar usuario
+     * @param ValidarEditUsuario $request
+     */
+    public static function putUsuario(ValidarEditUsuario $request){
+        $datos=$request->validated();
+
+        $imagen=Auth::user()->profile_img_file;
+        $pais=Auth::user()->country;
+        $codigo_postal=Auth::user()->postal_code;
+
+        //Mover imagen al directorio assets/img/img_usuarios con nombre nuevo
+        if (array_key_exists('imagen_perfil', $datos)) {
+            $imagen=time()."".$datos['imagen_perfil']->getClientOriginalName();
+            $datos['imagen_perfil']->move('assets/img/img_usuarios', $imagen);
+        }
+
+        //Cambiar codigo postal si se ha enviado
+        if (array_key_exists('codigo_postal', $datos))
+            $codigo_postal=$datos['codigo_postal'];
+
+
+        //Cambiar pais si se ha enviado
+        if (array_key_exists('pais', $datos))
+            $pais=$datos['pais'];
+
+
+        //Guardar
+        Auth::user()->username=$datos['username'];
+        Auth::user()->date_of_birth=$datos['fecha_nac'];
+        Auth::user()->sex=$datos['sexo'];
+        Auth::user()->country=$pais;
+        Auth::user()->postal_code=$codigo_postal;
+        Auth::user()->profile_img_file=$imagen;
+
+        Auth::user()->save();
+
+        return self::getPerfil();
+    }
 }

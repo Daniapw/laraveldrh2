@@ -59,7 +59,9 @@ class RegisterController extends Controller
             'alpha_num'=>'Este campo solo puede contener caracteres alfanuméricos.',
             'numeric'=>'Este campo solo puede contener números',
             'telefono.digits'=>'El número de teléfono debe tener 9 dígitos',
+            'dimensions'=>'Las dimensiones máximas para la imagen de perfil son de 300x300 px'
         ];
+
 
         return Validator::make($data, [
             'username' => ['required', 'string', 'max:30', 'unique:users', 'alpha_num'],
@@ -69,7 +71,7 @@ class RegisterController extends Controller
             'codigo_postal'=>['nullable','alpha_num'],
             'telefono'=>['nullable','digits:9'],
             "pais"=>['required'],
-            "imagen_perfil"=>['nullable','image']
+            "imagen_perfil"=>['nullable','image', 'dimensions:max_width=300, max_height=300']
         ], $mensajes);
     }
 

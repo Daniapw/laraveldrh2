@@ -1,7 +1,15 @@
 @extends('layouts.main')
+
+@section('head')
+    <script src="{{asset('assets/js/tooltips.js')}}"></script>
+@endsection
+
 @section('contenido')
     <div class="text-center mt-5">
-        <h1>Tu perfil</h1>
+        <h1>
+            Tu perfil
+            <a href="{{url('/usuario/modificar_perfil')}}" class="btn btn-success rounded-circle" data-toggle="tooltip" data-placement="right" title="Editar"><i class="fas fa-edit"></i></a>
+        </h1>
     </div>
 
     <!--INFORMACION-->
@@ -133,6 +141,7 @@
             </div>
 
         </div>
+
     </div>
 
 @endsection

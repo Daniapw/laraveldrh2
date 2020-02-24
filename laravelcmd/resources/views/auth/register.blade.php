@@ -1,6 +1,6 @@
 @extends('layouts.main')
-
 @section('contenido')
+    {{var_dump($errors)}}
     <div class="row justify-content-center mt-5">
         <div class="col-12 col-md-8">
             <div class="card sombra">
@@ -11,18 +11,21 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="imagen_perfil" class="col-md-4 col-form-label text-md-right">{{ __('Imagen de perfil (opcional)') }}</label>
+                            <label for="imagen_perfil" class="col-md-4 col-form-label text-md-right">{{ __('Imagen de perfil (opcional, máximo 300x300 px)') }}</label>
 
                             <div class="col-md-6">
 
-                                <input type="file" class="form-control-file" id="imagen_perfil" name="imagen_perfil" class="form-control @error('imagen_perfil') is-invalid @enderror" value="{{ old('imagen_perfil') }}" accept="image/jpeg, image/png">
+                                <input type="file" id="imagen_perfil" name="imagen_perfil" class="form-custom-file @error('imagen_perfil') is-invalid @enderror" value="{{ old('imagen_perfil') }}" accept="image/jpeg, image/png">
 
                                 @error('imagen_perfil')
-                                <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
                             </div>
+
+
                         </div>
 
                         <div class="form-group row">
