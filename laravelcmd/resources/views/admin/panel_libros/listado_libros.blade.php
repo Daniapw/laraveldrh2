@@ -7,7 +7,7 @@
 @section('contenido')
 
     <div class="col-12 text-center mt-5">
-        <h1>Gestión de libros <a href="{{url("/admin/panel_libros/crear")}}" class="btn btn-success rounded-circle"><i class="fas fa-plus"></i></a></h1>
+        <h1>Gestión de libros <a href="{{url("/admin/panel_libros/crear")}}" class="btn btn-success rounded-circle" data-toggle="tooltip" data-placement="top" title="Agregar libro"><i class="fas fa-plus"></i></a></h1>
     </div>
 
     <div class="row mt-3">

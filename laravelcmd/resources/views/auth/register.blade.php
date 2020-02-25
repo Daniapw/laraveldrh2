@@ -1,6 +1,5 @@
 @extends('layouts.main')
 @section('contenido')
-    {{var_dump($errors)}}
     <div class="row justify-content-center mt-5">
         <div class="col-12 col-md-8">
             <div class="card sombra">

@@ -13,9 +13,19 @@
                 <a class="nav-link {{ (request()->is('/') || request()->is('/home')) ? 'active' : '' }}" href="{{url('/')}}">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ (request()->is('categoria/indice')) ? 'active' : '' }}" href="{{url('/categoria/indice')}}">Categorías</a>
+                <a class="nav-link {{ (request()->is('categoria*')) ? 'active' : '' }}" href="{{url('/categoria/indice')}}">Categorías</a>
             </li>
+            @if(Auth::check())
+                <li class="nav-item">
+                    <a class="nav-link {{ (request()->is('usuario/favoritos')) ? 'active' : '' }}" href="{{url('/usuario/favoritos')}}">Favoritos</a>
+                </li>
+            @endif
 
+            @if(Auth::check() && Auth::user()->role=="admin")
+                <li class="nav-item">
+                    <a class="nav-link {{ (request()->is('admin/panel*')) ? 'active' : '' }}" href="{{url('/admin/panel')}}">Panel de gestión</a>
+                </li>
+            @endif
         </ul>
     </div>
 
@@ -30,10 +40,6 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right " aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item font-weight-bold" href="{{url('/usuario/perfil')}}">Tu perfil</a>
-                    <a class="dropdown-item font-weight-bold" href="{{url('/usuario/favoritos')}}">Tus libros favoritos</a>
-                    @if(Auth::user()->role=="admin")
-                        <a class="dropdown-item font-weight-bold" href="{{url('/admin/panel')}}">Panel de gestión</a>
-                    @endif
                     <a class="dropdown-item font-weight-bold" href="{{route('logout')}}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">

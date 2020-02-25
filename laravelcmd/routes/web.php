@@ -48,7 +48,7 @@ Route::prefix('categoria')->group(function(){
 });
 
 //Rutas del panel de administracion con middleware personalizado que comprobara si el usuario logeado tiene el rol 'admin'
-Route::group(['prefix' => 'admin',  'middleware' => 'admin'], function(){
+Route::group(['prefix' => 'admin',  'middleware' => ['admin', 'verified']], function(){
     Route::get('panel', 'AdminController@getPanelPrincipal');
 
     //Panel de gestion de usuarios

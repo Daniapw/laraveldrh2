@@ -59,7 +59,7 @@
 </div>
 
 <div class="text-center mt-3">
-    <a href="{{url('/admin/panel_categorias/listado')}}" class="btn btn-primary">Volver al panel</a>
+    <a href="{{url('/admin/panel_categorias/listado')}}" class="btn btn-danger">Cancelar</a>
 </div>
 
 @endsection

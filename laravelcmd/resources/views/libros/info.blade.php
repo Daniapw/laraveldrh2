@@ -91,6 +91,7 @@
                                             {{csrf_field()}}
 
                                             <div class="form-group">
+                                                <div class="text-center"><p class="mb-0 text-muted">Máx. 280 caracteres</p></div>
                                                 <textarea class="form-control @error('content') is-invalid @enderror" name="content" maxlength="280" rows="7" required>
 
                                                 </textarea>
@@ -132,7 +133,7 @@
                                     <div class="bg-gris overflow-auto mh-75">
 
                                         <!--Contenido review-->
-                                        <p class="font-weight-bold mb-1"><img src="{{asset("assets/img/img_usuarios/".Auth::user()->profile_img_file)}}" class="mr-1 rounded-circle" width="30px" alt="">Tú</p>
+                                        <p class="font-weight-bold mb-1"><img src="{{asset("assets/img/img_usuarios/".Auth::user()->profile_img_file)}}" class="mr-1 rounded-circle" width="30px" alt=""> Tú</p>
 
                                         <span id="review-usuario">
                                             <p class="text-muted fecha-valoracion">{{$review_usuario->updated_at}}</p>
@@ -191,16 +192,16 @@
 
                             @if(!Auth::check())
                                 <div class="text-center mt-3">
-                                    <h5>
+                                    <p>
                                         <a href="{{url("/login")}}" class="font-weight-bold">¿Quieres compartir tu opinión sobre este libro? Inicia sesión o regístrate aquí</a>
-                                    </h5>
+                                    </p>
                                 </div>
                             @endif
 
                         @if(count($reviews)>0)
                             @foreach($reviews as $review)
                                 <div class="p-3 mt-4">
-                                    <p class="font-weight-bold mb-1"><img src="{{asset("assets/img/img_usuarios/".$review->user->profile_img_file)}}" class="mr-1 rounded-circle" width="30px" alt=""> {{$review->user->username}}</p>
+                                    <p class="font-weight-bold mb-1"><img src="{{asset("assets/img/img_usuarios/".$review->user->profile_img_file)}}" class="mr-1 rounded-circle" width="30px" alt=""> {{$review->user->username}} ({{$review->user->email}})</p>
                                     <p class="text-muted fecha-valoracion">{{$review->updated_at}}</p>
 
                                     <div class="p-4 border text-break text-wrap">

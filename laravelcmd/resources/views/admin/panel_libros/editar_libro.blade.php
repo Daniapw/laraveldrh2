@@ -142,7 +142,7 @@
     </div>
 
     <div class="text-center mt-3">
-        <a href="{{url('admin/panel_libros/listado')}}" class="btn btn-primary">Volver al panel</a>
+        <a href="{{url('admin/panel_libros/listado')}}" class="btn btn-danger"><i class="fas fa-times"></i> Cancelar</a>
     </div>
 
 @endsection

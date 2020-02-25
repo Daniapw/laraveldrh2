@@ -12,7 +12,7 @@ body{
     font-family: 'Quicksand', sans-serif;
     font-weight: bold;
     background-color:#434e52;
-    font-size:20px;
+    font-size:18px;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -31,17 +31,22 @@ form label{
 
 a{
     text-decoration:none !important;
+    font-weight:bold;
     color:brown;
     transition:0.3s;
-}
+    font-family: 'Quicksand', sans-serif;
 
-.username{
-    font-size:20px;
 }
 
 a:hover{
     color:#f58540;
     transition:0.3s
+
+}
+
+.username{
+    font-size:18px;
+    font-weight: normal;
 }
 
 .container-libro{
@@ -57,7 +62,7 @@ a:hover{
 }
 
 .img-perfil{
-    width:40px;
+    width:35px;
 }
 
 .link-login{
@@ -176,6 +181,15 @@ a:hover{
 .titulo-perfil{
     font-family: 'Quicksand', sans-serif;
     font-weight: bold;
+}
+
+.tarjeta-favorito{
+    transition:0.8s;
+}
+
+.tarjeta-favorito:hover{
+    transform: scale(1.05);
+    transition:0.8s;
 }
 
 /*----------------------------------------------------
