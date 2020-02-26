@@ -1,5 +1,5 @@
 <header class="text-center py-3 header">
-    <h1>DRH-Books</h1>
+    <h1>DRHBooks</h1>
 </header>
 <nav class="navbar navbar-expand-lg navbar-dark p-2 d-flex">
 

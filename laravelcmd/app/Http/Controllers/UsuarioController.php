@@ -127,4 +127,24 @@ class UsuarioController extends Controller
 
         return self::getPerfil();
     }
+
+    /**
+     * @param Request $request
+     */
+    public static function putRol(Request $request){
+
+        try {
+            $usuario = User::findOrFail($request->input('id'));
+
+            $rol = $request->input('rol');
+
+            $usuario->role = $rol;
+
+            $usuario->save();
+        }catch(ModelNotFoundException $e){
+
+        }
+
+        return AdminController::getPanelUsuarios();
+    }
 }

@@ -55,6 +55,7 @@ Route::group(['prefix' => 'admin',  'middleware' => ['admin', 'verified']], func
     Route::group(['prefix'=>'panel_usuarios'], function(){
         Route::get('listado', 'AdminController@getPanelUsuarios');
         Route::delete('listado', 'UsuarioController@deleteUsuario');
+        Route::put('listado', 'UsuarioController@putRol');
     });
 
 

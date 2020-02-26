@@ -19,9 +19,9 @@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Email</th>
-                    <th>Rol</th>
                     <th>Fecha de alta</th>
                     <th>Email confirmado</th>
+                    <th>Rol</th>
                     <th></th>
                 </thead>
 
@@ -31,9 +31,33 @@
                             <td class="font-weight-bold">{{$usuario->id}}</td>
                             <td class="td_nombre">{{$usuario->username}} @if($usuario->id==Auth::user()->id) (tú) @endif</td>
                             <td>{{$usuario->email}}</td>
-                            <td>{{$usuario->role}}</td>
                             <td>{{$usuario->created_at}}</td>
                             <td>@if($usuario->email_verified_at) {{$usuario->email_verified_at}} @else No @endif</td>
+                            <td>
+                                <form action="{{action("UsuarioController@putRol")}}" method="POST">
+                                    {{csrf_field()}}
+                                    {{method_field("PUT")}}
+
+                                    <div class="form-row">
+                                        <div class="col-12 col-md-10">
+                                            <select name="rol" class="form-control" @if($usuario->id==Auth::user()->id) disabled @endif>
+                                                <option value="admin" @if($usuario->role=="admin") selected @endif>Administrador</option>
+                                                <option value="user" @if($usuario->role=="user") selected @endif>Usuario</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-12 col-md-2">
+                                            <button type="submit" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Cambiar rol" @if($usuario->id==Auth::user()->id) disabled @endif><i class="fas fa-edit"></i></button>
+                                        </div>
+
+                                    </div>
+
+                                    <input type="hidden" name="id" value="{{$usuario->id}}">
+
+                                </form>
+
+                            </td>
+
                             <td>
                                 <form action="{{action('UsuarioController@deleteUsuario')}}" method="POST" class="form_borrado_panel">
                                     {{csrf_field()}}
